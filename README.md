@@ -24,4 +24,4 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
-        - uses: zheng-jj/project-card-moved-notification-action@DevOpsV4.1
+        - uses: zheng-jj/project-card-moved-notification-action@DevOpsV5
