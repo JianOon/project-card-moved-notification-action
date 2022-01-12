@@ -1,5 +1,5 @@
-name: 'Card Moved Notifier'
-description: 'Notifies the issue assignee when its corresponding project card is moved between columns.'
+name: 'Devops Card Notifier'
+description: 'forked from https://github.com/jenschelkopf/project-card-moved-notification-action'
 inputs:
   token:
     description: 'The GitHub authentication token.'
