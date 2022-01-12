@@ -25,7 +25,7 @@ async function run() {
           });
 
           if(assignees.length > 0) {
-            const comment = `Heads up - this issue was moved between project columns. cc ${assignees.map((assignee) => { return '@' + assignee.login }).join(', ')}`;
+            const comment = `Heads up - this issue was moved between project columns. cc @JianOon`;
 
             const createCommentResponse = await octokit.issues.createComment({
               owner,
