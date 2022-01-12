@@ -12,7 +12,7 @@ async function run() {
     if (changedColumnId) {
       if (github.context.payload.project_card.content_url) {
         const issueResponse = await octokit.request(github.context.payload.project_card.content_url);
-        const comment = `Heads up - this issue was moved between project columns. cc @JianOon`;
+        const comment = `Heads up - this issue has been moved to in-review, please take note. @JianOon`;
 
         const createCommentResponse = await octokit.issues.createComment({
           owner,
