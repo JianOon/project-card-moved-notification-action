@@ -13,13 +13,17 @@ async function run() {
       if (github.context.payload.project_card.content_url) {
         const issueResponse = await octokit.request(github.context.payload.project_card.content_url);
         const comment = `Heads up - this issue has been moved to in-review, please take note. @JianOon`;
-
-        const createCommentResponse = await octokit.issues.createComment({
-          owner,
-          repo,
-          issue_number: issueResponse.data.number,
-          body: comment
-        });
+        var arrayLength = issueResponse.data.labels.length;
+        for (var i = 0; i < arrayLength; i++) {
+          if ((issueResponse.data.labels[i]["name"]) == "Dev Task") {
+            const createCommentResponse = await octokit.issues.createComment({
+              owner,
+              repo,
+              issue_number: issueResponse.data.number,
+              body: comment
+            });
+          }
+        }
       }
     }
 
