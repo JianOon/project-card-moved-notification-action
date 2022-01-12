@@ -11,33 +11,16 @@ async function run() {
 
     if (changedColumnId) {
       if (github.context.payload.project_card.content_url) {
-          const issueResponse = await octokit.request(github.context.payload.project_card.content_url);
+        const issueResponse = await octokit.request(github.context.payload.project_card.content_url);
+        const comment = `Heads up - this issue was moved between project columns. cc @JianOon`;
 
-          const assigneeFilter = core.getInput('assigneeFilter').length > 0 ? core.getInput('assigneeFilter').split(',') : [];
-          const assignees = issueResponse.data.assignees.filter((assignee) => {
-            if(assigneeFilter.length == 0) {
-              return true;
-            }
-            return assigneeFilter.findIndex((filterItem) => {
-              console.log(`Comparing filter ${filterItem.toLowerCase()} to assignee ${assignee.login.replace(/\s/g, '').toLowerCase()}`);
-              return filterItem.toLowerCase() == assignee.login.replace(/\s/g, '').toLowerCase();
-            }) > -1;
-          });
-
-          if(assignees.length > 0) {
-            const comment = `Heads up - this issue was moved between project columns. cc @JianOon`;
-
-            const createCommentResponse = await octokit.issues.createComment({
-              owner,
-              repo,
-              issue_number: issueResponse.data.number,
-              body: comment
-            });
-          } else {
-            console.log("No issue assignee that matches filter (if set) - doing nothing.");
-          }
+        const createCommentResponse = await octokit.issues.createComment({
+          owner,
+          repo,
+          issue_number: issueResponse.data.number,
+          body: comment
+        });
       }
-
     }
 
   } catch (error) {
