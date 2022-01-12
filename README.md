@@ -1,4 +1,5 @@
 # GitHub Action - Project Card Moved Notifications
+This action was forked from https://github.com/jenschelkopf/project-card-moved-notification-action
 This GitHub Action allows you to notify an issue's assignee when its corresponding project card moves between columns.
 
 ![Screen Shot 2020-07-13 at 1 56 38 PM](https://user-images.githubusercontent.com/1865328/87342336-af55b600-c510-11ea-8ebf-8ec4453d524a.png)
@@ -23,4 +24,4 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
-        - uses: jenschelkopf/project-card-moved-notification@1.0
+        - uses: zheng-jj/project-card-moved-notification-action@DevOpsV4.1
